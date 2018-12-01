@@ -1,0 +1,169 @@
+var flag = 1;
+function test() {
+    var value = parseFloat(document.getElementById("form").value);
+    var el = document.getElementById('duy');
+    var style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+    var fontSize = parseFloat(style);
+    el.style.fontSize = (fontSize + value) + 'px';
+}
+function changeImage() {
+    var im = document.getElementById('image');
+    im.src = "Drawable/" + flag + ".jpg";
+    if (flag < 4) {
+        flag++;
+    } else {
+        flag = 0;
+    }
+}
+function changeText() {
+    if (document.getElementById('duy').innerHTML == 'Hello') { document.getElementById('duy').innerHTML = 'Hi'; } else { document.getElementById('duy').innerHTML = 'Hello'; }
+}
+function changeURL() {
+    var frame = document.getElementById('duyf');
+    var val = document.getElementById('path')
+    if (val.value != "") {
+        frame.src = "http://" + val.value;
+    } else {
+        alert('Khong the bo trong !');
+    }
+}
+var isBoong = true;
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var ht = document.getElementById('hour').value;
+    var mt = document.getElementById('min').value;
+    var timeText = document.getElementById('time');
+    //When on waiting
+    if(isBoong == false) {
+        /*
+        if(mt == "00"){
+            ht-=1;
+            mt = 60;
+        }
+        var hl;
+        var ml = mt - m;
+        var sl = 60 - s;
+        if(ht < h){
+            hl = 24 + (ht - h);
+        }else if(h > ht){
+            hl = ht - h;
+        }
+        if(hl < 0){
+            hl = 0;
+        }
+        if(ml <= 0){
+            ml = 60 + ml - 1;
+            hl -=1;
+        }else if(ml == 0){
+
+        }
+        else{
+            ml -=1;
+        }*/
+        /*
+                var hl,ml,sl = 60 - s;
+                if(mt < m){
+                    ml = (mt - m) + 60;
+                }else{
+                    ml = mt - m;
+                    if(s > 0){
+                        ml -=1;
+                    }
+                }
+                if(ht < h){
+                    hl = (ht - h) + 24;
+                }else{
+                    hl = h - ht;
+                    if(ml > 0){
+                        hl -=1;
+                    }
+                }
+
+                timeText.innerHTML = "Time left: " + hl + ":" + ml + ":" + sl;
+                document.title = "ALARM IN: " + hl + ":" + ml + ":" + sl;*/
+    }
+    //When time is up
+    if (ht == "" || mt == "") { } else {
+        if (h == ht && m == mt && isBoong == false) {
+            document.getElementById('sound').play();
+            //alert("BONG!");
+
+            var notification = new Notification('ALARM PAGE', {
+                icon: 'https://banner2.kisspng.com/20180212/sce/kisspng-alarm-device-security-alarm-icon-red-flat-alarm-5a81f99e2b1260.3515073315184674861764.jpg',
+                body: "BOOOOOOOOONG! IT'S TIME"
+            });
+
+            isBoong = true;
+            timeText.innerHTML = "BOONG!";
+            document.title = "Duy Testing";
+        }
+    }
+
+    m = checkTime(m);
+    s = checkTime(s);
+
+    var timebar = document.getElementById('TimeBar');
+    timebar.innerHTML = h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) { i = "0" + i };
+    return i;
+}
+function AddRow() {
+    var textHo = document.getElementById('ho').value;
+    var textTen = document.getElementById('ten').value;
+    var textMSSV = document.getElementById('mssv').value;
+
+    if (textHo == "" || textTen == "" || textMSSV == "") {
+        alert("Khong duoc bo o trong !")
+    } else {
+        var table = document.getElementById('sinhvien');
+        var newRow = table.insertRow(table.rows.length / 2 + 1);
+        var cel1 = newRow.insertCell(0);
+        var cel2 = newRow.insertCell(1);
+        var cel3 = newRow.insertCell(2);
+
+        cel1.innerHTML = textHo;
+        cel2.innerHTML = textTen;
+        cel3.innerHTML = textMSSV;
+    }
+}
+function showStuff(id) {
+    var btn = document.getElementById('button' + id);
+    if (document.getElementById(id).style.display == 'none') {
+        document.getElementById(id).style.display = 'block';
+        btn.innerHTML = "<b>Hide " + id + "</b>";
+        btn.style.background = "black";
+        btn.style.color = "white";
+    } else {
+        document.getElementById(id).style.display = 'none';
+        btn.innerHTML = "<b>Show " + id + "</b>";
+        btn.style.background = "white";
+        btn.style.color = "black";
+    }
+    TurnOffOtherButton(id,btn);
+}
+function TurnOffOtherButton(p_id,btn) {
+    var listBtn = document.querySelectorAll('ul li button');
+    for(var i = 0; i < listBtn.length ; i++){
+        if (listBtn[i].style.background == "black" && listBtn[i].id !== "button" +  p_id) {
+            listBtn[i].click();
+            btn.click();
+        }
+    }
+}
+var count = 0;
+function InfinityButton(btn) {
+    var p = document.getElementById('infb_' + count);
+    if (count !== 9) {
+        count++;
+        p.innerHTML = "<button onclick='InfinityButton(this)' id='infb_b" + (count) + "' style='margin-left:" + count * 8 + "px''>Click me</button>" + "<p id='infb_" + (count) + "'></p>";
+    } else {
+        p.innerHTML = "Come on ? You have nothing to do, do you?";
+    }
+    btn.onclick = "";
+}

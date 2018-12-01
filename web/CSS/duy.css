@@ -1,0 +1,232 @@
+* {
+    box-sizing: border-box;
+}
+
+html{
+    max-width: 2000px;
+    margin:auto;
+}
+
+body{
+background:black;
+}
+body nav,article,footer{
+border-radius:5px;
+margin-top:5px;
+}
+
+
+body nav,article{
+    height: 800px;
+}
+
+
+#duy {
+    position: relative;
+    animation: mymove 3s infinite;
+}
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+@keyframes mybackmove {
+    from {left: 200px;}
+    to {left: 0px;}
+}
+
+table {
+    width:70%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+table#sinhvien tr:nth-child(even) {
+    background-color: #eee;
+}
+table#sinhvien tr:nth-child(even):hover {
+    background-color: gray;
+}
+table#sinhvien tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#sinhvien tr:nth-child(odd):hover {
+    background-color: gray;
+}
+table#sinhvien th {
+    background-color: black;
+    color: white;
+}
+
+ul{
+list-style-type:none;
+}
+
+.list li{
+float:left;
+padding: 16px;
+text-decoration:none;
+background-color:#000000;
+color:white;
+}
+
+.center{
+text-align:center;
+}
+
+/*Background Image*/
+.imgHeader{
+background-image:url("https://backgroundcheckall.com/wp-content/uploads/2018/10/graphite-texture-background.png");
+}
+.imgNav{
+background-image:url("https://i.stack.imgur.com/C5qGr.png");
+background-size: 100%;
+}
+.imgArticle{
+background-image:url("https://i0.wp.com/ficedu.org/wp-content/uploads/2016/07/Savin-NY-Website-Background-Web.jpg");
+background-size: 40%;
+background-position:bottom;
+background-repeat:repeat-x;
+}
+.imgFooter{
+
+}
+
+
+/*Layout*/
+header {
+font-family: 'Aldrich';
+    background-color: #666;
+    padding: 60px;
+    text-align: center;
+    color: white;
+}
+
+nav {
+    float: left;
+    width: 20%;
+    background: #ccc;
+    padding: 20px;
+overflow:auto;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li{
+padding:5px;
+text-align:center;
+}
+nav ul li button{
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  transition: 0.5s;
+}
+
+
+article {
+margin-left:5px;
+    float: left;
+    padding: 20px;
+    width: calc(80% - 5px);
+    background-color: #FFFFFF;
+overflow:auto;
+}
+
+
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+
+
+
+/*Mobile Device*/
+@media (max-width: 900px) {
+    body nav, article {
+        width: 100%;
+        height: auto;
+    }
+article{
+margin-left:0px;
+}
+nav ul li{
+    float: left;
+}
+nav ul li button{
+    width: auto;
+}
+
+    #TimeBar{
+        display: none;
+    }
+
+}
+
+
+
+@media (min-width: 900px) {
+nav ul li button:hover{
+    background-color: gray;
+padding-right:0px;
+}
+
+}
+
+button{
+border-radius:5px;
+}
+
+#TimeBar{
+    position: fixed;
+    padding-right: 10px;
+    padding-left: 10px;
+    top:300px;
+    right:0;
+    width: auto;
+    height: auto;
+    background: #000000;
+    color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#logoutButton {
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.5s;
+}
+ #logoutButton:hover{
+    background-color:red;
+    color:white;
+}
