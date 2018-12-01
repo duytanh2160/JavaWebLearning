@@ -30,7 +30,7 @@
 
 
 
-<body onload="startTime()">
+<body class="main-bg" onload="startTime()">
 
 <SCRIPT>
     var loginStatus = '<%=login%>';
@@ -42,8 +42,19 @@
 
 <div id="LAYOUT">
   <p id="TimeBar"></p>
+
+
   <header class="imgHeader">
-    <h1>So, This is a Header !</h1></header>
+    <h1>So, This is a Header !</h1>
+  </header>
+
+
+  <div class="topnav">
+    <a class="active" href="/" >Home</a>
+    <a href="javascript:funJavaScript()">Fun JavaScript</a>
+  </div>
+
+
   <section>
 
     <!------------------------------------NAV-->
@@ -146,7 +157,7 @@
         <span>http://</span>
         <input type="text" id="path"></input><br>
         <button onclick="changeURL()">Change Url</button>
-        <iframe width="100%" height="70%" name="iframe_test" id="duyf" src="http://projectweb.gearhostpreview.com/"></iframe>
+        <iframe width="100%" height="87%" name="iframe_test" id="duyf" src="http://projectweb.gearhostpreview.com/"></iframe>
         <hr />
       </div>
 
@@ -205,6 +216,8 @@
     document.getElementById('INFINITYBUTTON').style.display = 'none';
     //document.getElementById('LAYOUT').style.display = 'none';
     //document.getElementById('LOGINFORM').style.display = 'none';
+
+    document.querySelector('nav').style.display = "block";
 </script>
 </body>
 </html>

@@ -167,3 +167,19 @@ function InfinityButton(btn) {
     }
     btn.onclick = "";
 }
+
+function funJavaScript(){
+    var a = document.querySelector('nav');
+    var b = document.querySelector('article');
+    if(a.style.display == "block"){
+        a.style.display = "none";
+        b.style.float = "none";
+        b.style.margin = "auto";
+        b.style.width = "100%";
+    }else if(a.style.display == "none"){
+        a.style.display = "block";
+        b.style.float = "left";
+        b.style.margin = "";
+        b.style.width ="calc(80% - 5px)";
+    }
+}
