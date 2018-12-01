@@ -158,8 +158,10 @@
           <source src="Drawable/good.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        H:<input type="text" id="hour" /><br />
-        M:<input type="text" id="min" /><br />
+        <label for="H-input">Hour:</label>
+        <input type="text" id="hour" name="H-input" /><br />
+        <label for="M-input">Minute:</label>
+        <input type="text" id="min" name="M-input" /><br />
         <button onclick="isBoong = false;document.getElementById('time').innerHTML = 'Alarm set!';">Set Alarm</button>
         <p id="time">TIME</p>
       </div>
