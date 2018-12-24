@@ -6,7 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="true" %>
-<%String login = (String)session.getAttribute("login");%>
+<%
+  String login = (String)session.getAttribute("login");
+  String username = (String)session.getAttribute("username");
+%>
 
 
 <html>
@@ -69,6 +72,7 @@
         <li><button id="buttonTIME" onclick="showStuff('TIME'); if(Notification.permission !== 'granted')Notification.requestPermission();">Show TIME</button></li>
         <li><button id="buttonFUNBUTTON" onclick="showStuff('FUNBUTTON')">Show FUNBUTTON</button></li>
         <li><button id="buttonINFINITYBUTTON" onclick="showStuff('INFINITYBUTTON')">Show INFINITYBUTTON</button></li>
+        <li><button id="buttonQLDATMON" onclick="showStuff('QLDATMON')">Show QLDATMON</button></li>
         <!--<li><button id="buttonLAYOUT" onclick="showStuff('LAYOUT')">Show LAYOUT</button></li>-->
         <!--<li><button id="buttonLOGINFORM" onclick="showStuff('LOGINFORM')">Show LOGINFORM</button></li>-->
         <li><form action="Logout" method="post">
@@ -192,6 +196,75 @@
         <p id="infb_0"></p>
       </div>
 
+        <div id="QLDATMON">
+            <button id="phieudat_button" onclick="ToggleUpdate()">Bật Update Phiếu Đặt</button>
+
+          <div style="clear:both;padding-top:30px;">
+            <table style="margin:auto" id="phieudat">
+              <tbody>
+              <tr>
+                  <th>ID Phiếu</th>
+                  <th>TG Lập</th>
+                  <th>STT Bàn</th>
+                  <th>Tình Trạng</th>
+              </tr>
+              <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              </tbody>
+          </table>
+          </div>
+
+            <div style="clear: both;">
+                <img id="loadingimage" style="visibility: hidden;height: 90px; text-align: center; display: block; margin-left: auto; margin-right: auto;" src="https://i.gifer.com/XOsX.gif" />
+            </div>
+
+            
+            <div style="clear:both;">
+            <table style="margin:auto" id="chitietphieudat">
+                <tbody>
+                <tr>
+                    <th>ID Phiếu Đặt</th>
+                    <th>ID Chi Tiết Phiếu</th>
+                    <th>STT Món ăn</th>
+                    <th>Kích cỡ</th>
+                    <th>Số lượng</th>
+                    <th>Tổng giá</th>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+
+
+        </div>
+
 
 
 
@@ -214,10 +287,23 @@
     document.getElementById('TIME').style.display = 'none';
     document.getElementById('FUNBUTTON').style.display = 'none';
     document.getElementById('INFINITYBUTTON').style.display = 'none';
+    document.getElementById('QLDATMON').style.display = 'none';
     //document.getElementById('LAYOUT').style.display = 'none';
     //document.getElementById('LOGINFORM').style.display = 'none';
 
     document.querySelector('nav').style.display = "block";
+
+    var h1 = document.querySelector('h1');
+    h1.innerText = "Welcome to my Page," + ' <%=username%> !';
 </script>
+
+<script>
+    addRowHandlers();
+</script>
+
+
+
+
+
 </body>
 </html>

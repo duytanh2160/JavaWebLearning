@@ -11,6 +11,7 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>Logout</servlet-class>
@@ -19,4 +20,34 @@
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>Register</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowPhieuDat</servlet-name>
+        <servlet-class>ShowPhieuDat</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowPhieuDat</servlet-name>
+        <url-pattern>/ShowPhieuDat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowChiTietPhieuDat</servlet-name>
+        <servlet-class>ShowChiTietPhieuDat</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowChiTietPhieuDat</servlet-name>
+        <url-pattern>/ShowChiTietPhieuDat</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>

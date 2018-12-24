@@ -15,8 +15,8 @@ import java.util.List;
 
 public class Login extends HttpServlet {
 
-    public List<String> Users = Arrays.asList("admin", "duyta");
-    public List<String> Passwords = Arrays.asList("123", "khongbiet");
+//    public List<String> Users = Arrays.asList("admin", "duyta");
+//    public List<String> Passwords = Arrays.asList("123", "khongbiet");
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //response.setStatus(HttpServletResponse.SC_NO_CONTENT);  //To make Servlet doesnt return a html page.
@@ -35,6 +35,8 @@ public class Login extends HttpServlet {
         try {
             if(valid.isThisAccountRight(name,pass)){
                 session.setAttribute("login","ok");
+                session.setAttribute("username",name);
+
                 response.sendRedirect("/");
             }else{
                 response.setContentType("text/html");
@@ -63,15 +65,17 @@ public class Login extends HttpServlet {
         doPost(request,response);
     }
 
-    private boolean checkAccount(String name, String pass){
-        for(int i = 0 ; i < Users.size() ; i++){
-            if(Users.get(i).equals(name)){
-                if(Passwords.get(i).equals(pass)){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+
+
+//    private boolean checkAccount(String name, String pass){
+//        for(int i = 0 ; i < Users.size() ; i++){
+//            if(Users.get(i).equals(name)){
+//                if(Passwords.get(i).equals(pass)){
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
 
 }

@@ -183,3 +183,106 @@ function funJavaScript(){
         b.style.width ="calc(80% - 5px)";
     }
 }
+
+
+
+var oldJSonObject;
+function updateTablePhieuDat() {
+    $.get("ShowPhieuDat", function(json) {
+        if(JSON.stringify(json) !== JSON.stringify(oldJSonObject)) {
+            oldJSonObject = json;
+            var table = document.getElementById('phieudat');
+            var rows = table.getElementsByTagName("tr");
+            var count = 1;
+            $.each(json, function (index, item) {
+                var column = rows[count].getElementsByTagName("td");
+                column[0].innerText = item[Object.keys(item)[0]];
+                column[1].innerText = item[Object.keys(item)[1]];
+                column[2].innerText = item[Object.keys(item)[2]];
+                column[3].innerText = item[Object.keys(item)[3]];
+                count++;
+            });
+        }
+    });
+}
+
+
+function ToggleLoadingImage(){
+    var gif = document.getElementById("loadingimage");
+    if(gif.style.visibility === "hidden"){
+        gif.style.visibility = "visible";
+    }else{
+        gif.style.visibility = "hidden";
+    }
+}
+
+function updateTableChiTiet(id){
+    $.get("ShowChiTietPhieuDat",{id : id}, function(json) {
+        var table = document.getElementById('chitietphieudat');
+        table.innerHTML = "<tbody>\n" +
+            "                <tr>\n" +
+            "                    <th>ID Phiếu Đặt</th>\n" +
+            "                    <th>ID Chi Tiết Phiếu</th>\n" +
+            "                    <th>STT Món ăn</th>\n" +
+            "                    <th>Kích cỡ</th>\n" +
+            "                    <th>Số lượng</th>\n" +
+            "                    <th>Tổng giá</th>\n" +
+            "                </tr>\n" +
+            "                </tbody>";
+        $.each(json, function (index, item) {
+        var newRow = table.insertRow(table.rows.length);
+        var cel1 = newRow.insertCell(0);
+        var cel2 = newRow.insertCell(1);
+        var cel3 = newRow.insertCell(2);
+        var cel4 = newRow.insertCell(3);
+        var cel5 = newRow.insertCell(4);
+        var cel6 = newRow.insertCell(5);
+
+        cel1.innerHTML = item[Object.keys(item)[0]];
+        cel2.innerHTML = item[Object.keys(item)[5]];
+        cel3.innerHTML = item[Object.keys(item)[1]];
+        cel4.innerHTML = item[Object.keys(item)[2]];
+        cel5.innerHTML = item[Object.keys(item)[3]];
+        cel6.innerHTML = item[Object.keys(item)[4]];
+    });
+        ToggleLoadingImage();
+    });
+
+}
+
+
+var interval;
+var isUpdate = false;
+function ToggleUpdate(){
+    if(isUpdate){
+        clearInterval(interval);
+        document.getElementById('phieudat_button').innerText = "Bật Update Phiếu Đặt";
+    }else{
+        interval = setInterval(updateTablePhieuDat,500);
+        document.getElementById('phieudat_button').innerText = "Tắt Update Phiếu Đặt";
+    }
+    isUpdate = !isUpdate;
+}
+
+
+function addRowHandlers() {
+    var table = document.getElementById("phieudat");
+    var rows = table.getElementsByTagName("tr");
+    for (i = 1; i < rows.length; i++) {
+        var currentRow = table.rows[i];
+        var createClickHandler =
+            function(row)
+            {
+                return function() {
+                    var cell = row.getElementsByTagName("td")[0];
+                    var id = cell.innerHTML;
+                    if(id !== ""){
+                        ToggleLoadingImage();
+                        updateTableChiTiet(id);
+                    }
+                };
+            };
+
+        currentRow.onclick = createClickHandler(currentRow);
+    }
+}

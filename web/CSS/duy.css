@@ -77,6 +77,50 @@ table#sinhvien th {
     color: white;
 }
 
+
+
+table#phieudat tr:nth-child(even) {
+    background-color: #eee;
+}
+table#phieudat tr:nth-child(even):hover {
+    background-color: gray;
+}
+table#phieudat tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#phieudat tr:nth-child(odd):hover {
+    background-color: gray;
+}
+table#phieudat th {
+    background-color: black;
+    color: white;
+}
+
+
+
+table#chitietphieudat tr:nth-child(even) {
+    background-color: #eee;
+}
+table#chitietphieudat tr:nth-child(even):hover {
+    background-color: gray;
+}
+table#chitietphieudat tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#chitietphieudat tr:nth-child(odd):hover {
+    background-color: gray;
+}
+table#chitietphieudat th {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+
+
+
 ul{
 list-style-type:none;
 }
